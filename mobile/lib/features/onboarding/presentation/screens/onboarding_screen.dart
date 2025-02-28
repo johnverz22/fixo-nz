@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile/features/onboarding/presentation/providers/onboarding_provider.dart';
+import 'package:mobile/features/onboarding/presentation/widgets/onboard_text_button.dart';
 import 'package:mobile/features/onboarding/presentation/widgets/onboarding_button.dart';
 
 class OnboardingScreen extends ConsumerWidget {
@@ -11,7 +12,21 @@ class OnboardingScreen extends ConsumerWidget {
     final pageController = PageController();
 
     return Scaffold(
-      body: Column(children: [
+        body: Stack(children: [
+      Positioned(
+        bottom: 0,
+        left: 0,
+        right: 0,
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height * 0.7,
+          width: double.infinity,
+          child: Image.asset(
+            'assets/images/onboarding_background.png',
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+      Column(children: [
         Expanded(
           child: PageView.builder(
             controller: pageController,
@@ -22,24 +37,42 @@ class OnboardingScreen extends ConsumerWidget {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(onboardingData[index].image),
-                  SizedBox(height: 20),
-                  Text(
+                  Transform.translate(
+                    offset: Offset(10, -50),
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.3,
+                      width: 380,
+                      child: Image.asset(
+                        onboardingData[index].image,),
+                      
+                      ),
+                    ),
+                  SizedBox(height: 24),
+                  SizedBox(
+                    width: 350,
+                    child: Text(
                     onboardingData[index].title,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: 25,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  ),
+                  
                   SizedBox(height: 10),
-                  Text(
+
+                  SizedBox(
+                    width: 350,
+                    child: Text(
                     onboardingData[index].description,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 16,
                     ),
-                  )
+                  ),
+                ),
+                  
                 ],
               );
             },
@@ -48,15 +81,13 @@ class OnboardingScreen extends ConsumerWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            OnboardingButton(
-              text: 'Skip',
+            OnboardTextButton(
+              text: 'Skip', 
               onPressed: () {
                 ref.read(onboardingProvider.notifier).skipPage(pageController);
-              },
-              isPrimary: false,
-              backgroundColor: Colors.transparent,
-              foregroundColor: Colors.blue,
-            ),
+              }
+              ),
+
             Row(
               children: List.generate(
                 onboardingData.length,
@@ -85,13 +116,13 @@ class OnboardingScreen extends ConsumerWidget {
                 }
               },
               isPrimary: true,
-              backgroundColor: Colors.blue,
+              backgroundColor: Color.fromARGB(255, 9, 12, 155),
               foregroundColor: Colors.white,
             )
           ],
         ),
         SizedBox(height: 20),
       ]),
-    );
+    ]));
   }
 }

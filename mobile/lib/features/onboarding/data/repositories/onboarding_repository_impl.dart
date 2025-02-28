@@ -12,7 +12,7 @@ class OnboardingRepositoryImpl implements OnboardingRepository{
         description: 'Easily connect with skilled professionals for quick, high-quality fixes and renovations.'),
 
       OnboardingEntities(
-        image: 'assets/images/onboarding2.png', 
+        image: 'assets/images/onboarding4.png', 
         title: 'Why FIXO is the Smart Choice', 
         description: 'FIXO provides a transparent, secure, and efficient way to hire skilled tradies.'),
 

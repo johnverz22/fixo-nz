@@ -1,7 +1,7 @@
 ---
 name: Task
 about: 'To-do task '
-title: ''
+title: "[Task] _________"
 labels: task
 assignees: ''
 

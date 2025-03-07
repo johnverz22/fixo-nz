@@ -5,7 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\OAuthController;
 
+
+Route::get('/auth/{provider}/redirect', [OAuthController::class, 'redirect']);
+Route::get('/auth/{provider}/callback', [OAuthController::class, 'callback']);
 Route::post('/register', function (Request $request) {
     $request->validate([
         'name' => 'required|string|max:255',

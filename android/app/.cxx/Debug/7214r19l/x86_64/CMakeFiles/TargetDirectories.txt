@@ -1,0 +1,2 @@
+C:/Users/User/OJTProjects/fixo-nz/mobile/android/app/.cxx/Debug/7214r19l/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/User/OJTProjects/fixo-nz/mobile/android/app/.cxx/Debug/7214r19l/x86_64/CMakeFiles/rebuild_cache.dir
